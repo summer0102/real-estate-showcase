@@ -41,13 +41,11 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
     <>
       {/* 主要輪播 */}
       <div className="relative w-full h-64 md:h-80 bg-gray-200 rounded-lg overflow-hidden">
-        <Image
+        <img
           src={images[currentIndex]}
           alt={`${title} - 圖片 ${currentIndex + 1}`}
-          fill
-          className="object-cover cursor-pointer"
+          className="w-full h-full object-cover cursor-pointer"
           onClick={() => setIsFullscreen(true)}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
 
         {/* 導航按鈕 */}
@@ -89,11 +87,9 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
                   : 'border-gray-300 hover:border-gray-400'
               }`}
             >
-              <Image
+              <img
                 src={image}
                 alt={`縮圖 ${index + 1}`}
-                width={64}
-                height={64}
                 className="w-full h-full object-cover"
               />
             </button>
@@ -114,13 +110,11 @@ export default function ImageCarousel({ images, title }: ImageCarouselProps) {
             </button>
 
             {/* 全螢幕圖片 */}
-            <div className="relative w-full h-full max-w-4xl max-h-full">
-              <Image
+            <div className="relative w-full h-full max-w-4xl max-h-full flex items-center justify-center">
+              <img
                 src={images[currentIndex]}
                 alt={`${title} - 圖片 ${currentIndex + 1}`}
-                fill
-                className="object-contain"
-                sizes="100vw"
+                className="max-w-full max-h-full object-contain"
               />
             </div>
 
