@@ -9,6 +9,11 @@ export default function MobileNavigation() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
+  // 在管理後台頁面不顯示導航選單
+  if (pathname.startsWith('/admin')) {
+    return null;
+  }
+
   const navigation = [
     { name: '首頁', href: '/', icon: Home },
     { name: '管理後台', href: '/admin', icon: Settings },
