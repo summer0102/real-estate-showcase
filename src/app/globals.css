@@ -1,15 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fefefe;
-  --foreground: #2d3748;
-  --primary: #e53e3e;
-  --primary-light: #feb2b2;
-  --secondary: #38b2ac;
-  --accent: #ed8936;
-  --warm-gray: #f7fafc;
-  --soft-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --warm-shadow: 0 10px 15px -3px rgba(237, 137, 54, 0.1), 0 4px 6px -2px rgba(237, 137, 54, 0.05);
+  --background: #fafafa;
+  --foreground: #262626;
+  --primary: #405de6;
+  --secondary: #c13584;
+  --accent: #fd5949;
+  --instagram-gradient: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd5949);
+  --card-bg: #ffffff;
+  --border-color: #dbdbdb;
+  --text-secondary: #8e8e8e;
+  --ig-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --ig-hover-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 @theme inline {
@@ -33,7 +35,7 @@ body {
   line-height: 1.6;
 }
 
-/* 溫馨風格自定義樣式 */
+/* Instagram 風格自定義樣式 */
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -41,49 +43,57 @@ body {
   overflow: hidden;
 }
 
-/* 溫馨卡片樣式 */
-.warm-card {
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: var(--soft-shadow);
-  transition: all 0.3s ease;
-  border: 1px solid rgba(237, 137, 54, 0.1);
+/* Instagram 卡片樣式 */
+.ig-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: var(--ig-shadow);
+  transition: all 0.2s ease;
+  border: 1px solid var(--border-color);
 }
 
-.warm-card:hover {
-  box-shadow: var(--warm-shadow);
-  transform: translateY(-2px);
+.ig-card:hover {
+  box-shadow: var(--ig-hover-shadow);
 }
 
-/* 溫馨按鈕樣式 */
-.warm-button {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  box-shadow: var(--soft-shadow);
+/* Instagram 按鈕樣式 */
+.ig-button {
+  background: var(--instagram-gradient);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  box-shadow: var(--ig-shadow);
+  border: none;
 }
 
-.warm-button:hover {
+.ig-button:hover {
+  box-shadow: var(--ig-hover-shadow);
   transform: translateY(-1px);
-  box-shadow: var(--warm-shadow);
 }
 
-/* 溫馨輸入框樣式 */
-.warm-input {
-  border-radius: 12px;
-  border: 2px solid rgba(237, 137, 54, 0.2);
-  transition: all 0.3s ease;
-  background: #ffffff;
+/* Instagram 輸入框樣式 */
+.ig-input {
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+  background: var(--card-bg);
 }
 
-.warm-input:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(237, 137, 54, 0.1);
+.ig-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(64, 93, 230, 0.1);
 }
 
-/* 溫馨背景 */
-.warm-bg {
-  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+/* Instagram 背景 */
+.ig-bg {
+  background: var(--background);
+}
+
+/* Instagram 漸層文字 */
+.ig-gradient-text {
+  background: var(--instagram-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* 手機優化 */

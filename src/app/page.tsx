@@ -63,32 +63,32 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen warm-bg">
+    <div className="min-h-screen ig-bg">
 
       {/* 標題區域 */}
-      <div className="bg-white/80 backdrop-blur-sm shadow-sm border-b border-orange-100">
-        <div className="max-w-7xl mx-auto mobile-padding px-4 py-8">
+      <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
+        <div className="max-w-7xl mx-auto mobile-padding px-4 py-6">
           <div className="flex items-center space-x-4 mb-6">
-            <div className="p-3 bg-gradient-to-br from-orange-400 to-red-500 rounded-2xl shadow-lg">
+            <div className="p-3 bg-gradient-to-br from-purple-500 via-pink-500 to-red-500 rounded-full shadow-lg">
               <HomeIcon className="text-white" size={28} />
             </div>
             <div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
-                溫馨家園
+              <h1 className="text-3xl font-bold ig-gradient-text">
+                RealEstate
               </h1>
-              <p className="text-gray-600 text-sm mt-1">尋找您的理想居所</p>
+              <p className="text-gray-500 text-sm mt-1">Discover your perfect home</p>
             </div>
           </div>
 
           {/* 搜尋欄 */}
           <div className="relative">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-orange-400" size={20} />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
             <input
               type="text"
-              placeholder="搜尋您心儀的家園..."
+              placeholder="Search properties..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 warm-input mobile-input text-gray-700 placeholder-gray-500"
+              className="w-full pl-10 pr-4 py-3 ig-input mobile-input text-gray-800 placeholder-gray-400 text-sm"
             />
           </div>
         </div>

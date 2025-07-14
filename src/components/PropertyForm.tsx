@@ -149,6 +149,10 @@ export default function PropertyForm({ property, onSubmit, onCancel, isLoading }
             value={formData.address}
             onChange={handleInputChange}
             required
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="請輸入完整地址"
           />
