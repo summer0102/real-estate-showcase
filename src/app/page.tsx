@@ -8,7 +8,6 @@ import PropertyFilter from '@/components/PropertyFilter';
 import { Home as HomeIcon } from 'lucide-react';
 
 export default function Home() {
-  const [properties, setProperties] = useState<Property[]>([]);
   const [filteredProperties, setFilteredProperties] = useState<Property[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -25,7 +24,6 @@ export default function Home() {
       setIsLoading(true);
       setError(null);
       const data = await propertyService.getAllProperties();
-      setProperties(data);
       setFilteredProperties(data);
     } catch (err) {
       console.error('載入物件失敗:', err);
@@ -39,7 +37,6 @@ export default function Home() {
     try {
       setIsLoading(true);
       const data = await propertyService.getFilteredProperties(filters);
-      setProperties(data);
       setFilteredProperties(data);
     } catch (err) {
       console.error('篩選物件失敗:', err);
