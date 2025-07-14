@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Property, PropertyFilter as FilterType } from '@/types/property';
+import { Property, PropertyFilter as PropertyFilterType } from '@/types/property';
 import { propertyService } from '@/lib/supabase';
 import PropertyCard from '@/components/PropertyCard';
 import PropertyFilter from '@/components/PropertyFilter';
@@ -9,6 +9,7 @@ import { Home as HomeIcon } from 'lucide-react';
 
 export default function Home() {
   const [filteredProperties, setFilteredProperties] = useState<Property[]>([]);
+  const [filters, setFilters] = useState<PropertyFilterType>({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -33,10 +34,11 @@ export default function Home() {
     }
   };
 
-  const handleFilterChange = async (filters: FilterType) => {
+  const handleFilterChange = async (newFilters: PropertyFilterType) => {
     try {
       setIsLoading(true);
-      const data = await propertyService.getFilteredProperties(filters);
+      setFilters(newFilters);
+      const data = await propertyService.getFilteredProperties(newFilters);
       setFilteredProperties(data);
     } catch (err) {
       console.error('篩選物件失敗:', err);
@@ -99,7 +101,7 @@ export default function Home() {
             <HomeIcon className="mx-auto text-gray-400 mb-4" size={48} />
             <h3 className="text-lg font-medium text-gray-900 mb-2">沒有找到物件</h3>
             <p className="text-gray-500 text-sm">
-              {Object.values(filters).some(v => v)
+              {Object.values(filters).some(v => v !== undefined && v !== '')
                 ? '請嘗試調整篩選器'
                 : '目前沒有可用的物件'}
             </p>
