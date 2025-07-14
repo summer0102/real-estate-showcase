@@ -5,7 +5,6 @@ import { Property, PropertyFilter as FilterType } from '@/types/property';
 import { propertyService } from '@/lib/supabase';
 import PropertyCard from '@/components/PropertyCard';
 import PropertyFilter from '@/components/PropertyFilter';
-import MobileNavigation from '@/components/MobileNavigation';
 import { Search, Home as HomeIcon, Loader2 } from 'lucide-react';
 
 export default function Home() {
@@ -65,7 +64,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen warm-bg">
-      <MobileNavigation />
 
       {/* 標題區域 */}
       <div className="bg-white/80 backdrop-blur-sm shadow-sm border-b border-orange-100">
