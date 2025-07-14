@@ -151,68 +151,76 @@ export default function PropertyDetail() {
             <span className="text-lg font-medium">{property.address}</span>
           </div>
 
-          {/* 基本資訊網格 */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-            <div className="bg-gradient-to-br from-orange-50 to-red-50 p-4 rounded-xl text-center border border-orange-100">
-              <Home className="mx-auto mb-2 text-orange-600" size={24} />
-              <div className="text-sm text-gray-700 font-medium">房型</div>
-              <div className="font-bold text-gray-800">{property.room_type}</div>
+          {/* Instagram 風格基本資訊 */}
+          <div className="px-4 py-3 space-y-3 mb-4">
+            <div className="flex items-center justify-between py-2 border-b border-gray-100">
+              <div className="flex items-center">
+                <Home className="mr-3 text-gray-500" size={18} />
+                <span className="text-gray-600">房型</span>
+              </div>
+              <span className="font-medium text-gray-900">{property.room_type}</span>
             </div>
-            <div className="bg-gradient-to-br from-red-50 to-pink-50 p-4 rounded-xl text-center border border-red-100">
-              <Ruler className="mx-auto mb-2 text-red-600" size={24} />
-              <div className="text-sm text-gray-700 font-medium">坪數</div>
-              <div className="font-bold text-gray-800">{property.area}坪</div>
+            <div className="flex items-center justify-between py-2 border-b border-gray-100">
+              <div className="flex items-center">
+                <Ruler className="mr-3 text-gray-500" size={18} />
+                <span className="text-gray-600">坪數</span>
+              </div>
+              <span className="font-medium text-gray-900">{property.area}坪</span>
             </div>
-            <div className="bg-gradient-to-br from-orange-50 to-yellow-50 p-4 rounded-xl text-center border border-orange-100">
-              <Building className="mx-auto mb-2 text-orange-600" size={24} />
-              <div className="text-sm text-gray-700 font-medium">樓層</div>
-              <div className="font-bold text-gray-800">{property.floor}F/{property.total_floors}F</div>
+            <div className="flex items-center justify-between py-2 border-b border-gray-100">
+              <div className="flex items-center">
+                <Building className="mr-3 text-gray-500" size={18} />
+                <span className="text-gray-600">樓層</span>
+              </div>
+              <span className="font-medium text-gray-900">{property.floor}F/{property.total_floors}F</span>
             </div>
-            <div className="bg-gradient-to-br from-red-50 to-orange-50 p-4 rounded-xl text-center border border-red-100">
-              <Calendar className="mx-auto mb-2 text-red-600" size={24} />
-              <div className="text-sm text-gray-700 font-medium">屋齡</div>
-              <div className="font-bold text-gray-800">{property.age}年</div>
+            <div className="flex items-center justify-between py-2">
+              <div className="flex items-center">
+                <Calendar className="mr-3 text-gray-500" size={18} />
+                <span className="text-gray-600">屋齡</span>
+              </div>
+              <span className="font-medium text-gray-900">{property.age}年</span>
             </div>
           </div>
 
-          {/* 詳細資訊 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          {/* Instagram 風格詳細資訊 */}
+          <div className="px-4 py-3 space-y-4 mb-4">
             <div>
-              <h3 className="font-bold text-gray-800 mb-4 flex items-center">
-                <Compass className="mr-2 text-orange-600" size={20} />
+              <h3 className="font-semibold text-gray-900 mb-3 flex items-center">
+                <Compass className="mr-2 text-gray-500" size={18} />
                 物件詳情
               </h3>
-              <div className="space-y-3 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-gray-700 font-medium">座向:</span>
-                  <span className="text-gray-800 font-medium">{property.direction}</span>
+              <div className="space-y-2">
+                <div className="flex justify-between py-1">
+                  <span className="text-gray-600">座向</span>
+                  <span className="text-gray-900 font-medium">{property.direction}</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-700 font-medium">管理費:</span>
-                  <span className="text-gray-800 font-medium">${property.management_fee.toLocaleString()}/月</span>
+                <div className="flex justify-between py-1">
+                  <span className="text-gray-600">管理費</span>
+                  <span className="text-gray-900 font-medium">${property.management_fee.toLocaleString()}/月</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-700 font-medium">刊登日期:</span>
-                  <span className="text-gray-800 font-medium">{formatDate(property.created_at)}</span>
+                <div className="flex justify-between py-1">
+                  <span className="text-gray-600">刊登日期</span>
+                  <span className="text-gray-900 font-medium">{formatDate(property.created_at)}</span>
                 </div>
               </div>
             </div>
 
             <div>
-              <h3 className="font-bold text-gray-800 mb-4 flex items-center">
-                <User className="mr-2 text-orange-600" size={20} />
+              <h3 className="font-semibold text-gray-900 mb-3 flex items-center">
+                <User className="mr-2 text-gray-500" size={18} />
                 聯絡資訊
               </h3>
-              <div className="space-y-3 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-gray-700 font-medium">聯絡人:</span>
-                  <span className="text-gray-800 font-medium">{property.contact_name}</span>
+              <div className="space-y-2">
+                <div className="flex justify-between py-1">
+                  <span className="text-gray-600">聯絡人</span>
+                  <span className="text-gray-900 font-medium">{property.contact_name}</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-700 font-medium">電話:</span>
+                <div className="flex justify-between py-1">
+                  <span className="text-gray-600">電話</span>
                   <a
                     href={`tel:${property.contact_phone}`}
-                    className="text-orange-600 hover:text-red-600 font-medium transition-colors"
+                    className="text-blue-600 hover:text-blue-800 font-medium transition-colors"
                   >
                     {property.contact_phone}
                   </a>
@@ -221,28 +229,28 @@ export default function PropertyDetail() {
             </div>
           </div>
 
-          {/* 特色標籤 */}
+          {/* Instagram 風格特色標籤 */}
           {property.features && property.features.length > 0 && (
-            <div className="mb-6">
-              <h3 className="font-bold text-gray-800 mb-4">物件特色</h3>
-              <div className="flex flex-wrap gap-3">
+            <div className="px-4 py-3 mb-4">
+              <h3 className="font-semibold text-gray-900 mb-3">物件特色</h3>
+              <div className="flex flex-wrap gap-2">
                 {property.features.map((feature, index) => (
                   <span
                     key={index}
-                    className="bg-gradient-to-r from-orange-100 to-red-100 text-orange-700 px-4 py-2 rounded-full text-sm font-medium border border-orange-200"
+                    className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm"
                   >
-                    {feature}
+                    #{feature}
                   </span>
                 ))}
               </div>
             </div>
           )}
 
-          {/* 描述 */}
+          {/* Instagram 風格描述 */}
           {property.description && (
-            <div>
-              <h3 className="font-bold text-gray-800 mb-4">物件描述</h3>
-              <p className="text-gray-800 leading-relaxed whitespace-pre-wrap text-base">
+            <div className="px-4 py-3 mb-4">
+              <h3 className="font-semibold text-gray-900 mb-3">物件描述</h3>
+              <p className="text-gray-800 leading-relaxed whitespace-pre-wrap">
                 {property.description}
               </p>
             </div>
