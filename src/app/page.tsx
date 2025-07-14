@@ -5,13 +5,12 @@ import { Property, PropertyFilter as FilterType } from '@/types/property';
 import { propertyService } from '@/lib/supabase';
 import PropertyCard from '@/components/PropertyCard';
 import PropertyFilter from '@/components/PropertyFilter';
-import { Search, Home as HomeIcon, Loader2 } from 'lucide-react';
+import { Home as HomeIcon } from 'lucide-react';
 
 export default function Home() {
   const [properties, setProperties] = useState<Property[]>([]);
   const [filteredProperties, setFilteredProperties] = useState<Property[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState('');
   const [error, setError] = useState<string | null>(null);
 
   // 載入所有物件
@@ -19,19 +18,7 @@ export default function Home() {
     loadProperties();
   }, []);
 
-  // 搜尋功能
-  useEffect(() => {
-    if (searchTerm.trim() === '') {
-      setFilteredProperties(properties);
-    } else {
-      const filtered = properties.filter(property =>
-        property.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        property.address.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        property.description.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setFilteredProperties(filtered);
-    }
-  }, [searchTerm, properties]);
+
 
   const loadProperties = async () => {
     try {

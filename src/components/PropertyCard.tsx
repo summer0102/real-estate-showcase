@@ -1,7 +1,7 @@
 'use client';
 
 import { Property } from '@/types/property';
-import { MapPin, Home, Ruler, Phone } from 'lucide-react';
+import { MapPin, Home, Phone } from 'lucide-react';
 import Link from 'next/link';
 
 interface PropertyCardProps {
