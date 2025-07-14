@@ -100,13 +100,13 @@ export default function PropertyDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen warm-bg">
       {/* 返回按鈕 */}
-      <div className="bg-white shadow-sm">
+      <div className="bg-white/90 backdrop-blur-sm shadow-sm border-b border-orange-100">
         <div className="max-w-4xl mx-auto px-4 py-4">
           <button
             onClick={() => router.back()}
-            className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors"
+            className="flex items-center space-x-2 text-gray-700 hover:text-orange-600 transition-colors font-medium"
           >
             <ArrowLeft size={20} />
             <span>返回列表</span>
@@ -122,90 +122,90 @@ export default function PropertyDetail() {
         </div>
 
         {/* 物件資訊 */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div className="warm-card p-6 mb-6">
           {/* 標題和價格 */}
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-            <h1 className="text-2xl font-bold text-gray-800 mb-2 md:mb-0">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+            <h1 className="text-3xl font-bold text-gray-800 mb-3 md:mb-0">
               {property.title}
             </h1>
-            <div className="flex items-center space-x-2">
-              <span className="text-3xl font-bold text-red-600">
+            <div className="flex items-center space-x-3">
+              <span className="text-3xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent">
                 ${formatPrice(property.price)}
               </span>
-              <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">
+              <span className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-3 py-1.5 rounded-full text-sm font-medium">
                 {getPropertyTypeText(property.property_type)}
               </span>
             </div>
           </div>
 
           {/* 地址 */}
-          <div className="flex items-center text-gray-600 mb-6">
-            <MapPin size={20} className="mr-2 flex-shrink-0" />
-            <span className="text-lg">{property.address}</span>
+          <div className="flex items-center text-gray-700 mb-6">
+            <MapPin size={20} className="mr-3 flex-shrink-0 text-orange-500" />
+            <span className="text-lg font-medium">{property.address}</span>
           </div>
 
           {/* 基本資訊網格 */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-            <div className="bg-gray-50 p-4 rounded-lg text-center">
-              <Home className="mx-auto mb-2 text-blue-600" size={24} />
-              <div className="text-sm text-gray-600">房型</div>
-              <div className="font-semibold">{property.room_type}</div>
+            <div className="bg-gradient-to-br from-orange-50 to-red-50 p-4 rounded-xl text-center border border-orange-100">
+              <Home className="mx-auto mb-2 text-orange-600" size={24} />
+              <div className="text-sm text-gray-700 font-medium">房型</div>
+              <div className="font-bold text-gray-800">{property.room_type}</div>
             </div>
-            <div className="bg-gray-50 p-4 rounded-lg text-center">
-              <Ruler className="mx-auto mb-2 text-green-600" size={24} />
-              <div className="text-sm text-gray-600">坪數</div>
-              <div className="font-semibold">{property.area}坪</div>
+            <div className="bg-gradient-to-br from-red-50 to-pink-50 p-4 rounded-xl text-center border border-red-100">
+              <Ruler className="mx-auto mb-2 text-red-600" size={24} />
+              <div className="text-sm text-gray-700 font-medium">坪數</div>
+              <div className="font-bold text-gray-800">{property.area}坪</div>
             </div>
-            <div className="bg-gray-50 p-4 rounded-lg text-center">
-              <Building className="mx-auto mb-2 text-purple-600" size={24} />
-              <div className="text-sm text-gray-600">樓層</div>
-              <div className="font-semibold">{property.floor}F/{property.total_floors}F</div>
+            <div className="bg-gradient-to-br from-orange-50 to-yellow-50 p-4 rounded-xl text-center border border-orange-100">
+              <Building className="mx-auto mb-2 text-orange-600" size={24} />
+              <div className="text-sm text-gray-700 font-medium">樓層</div>
+              <div className="font-bold text-gray-800">{property.floor}F/{property.total_floors}F</div>
             </div>
-            <div className="bg-gray-50 p-4 rounded-lg text-center">
-              <Calendar className="mx-auto mb-2 text-orange-600" size={24} />
-              <div className="text-sm text-gray-600">屋齡</div>
-              <div className="font-semibold">{property.age}年</div>
+            <div className="bg-gradient-to-br from-red-50 to-orange-50 p-4 rounded-xl text-center border border-red-100">
+              <Calendar className="mx-auto mb-2 text-red-600" size={24} />
+              <div className="text-sm text-gray-700 font-medium">屋齡</div>
+              <div className="font-bold text-gray-800">{property.age}年</div>
             </div>
           </div>
 
           {/* 詳細資訊 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div>
-              <h3 className="font-semibold text-gray-800 mb-3 flex items-center">
-                <Compass className="mr-2" size={20} />
+              <h3 className="font-bold text-gray-800 mb-4 flex items-center">
+                <Compass className="mr-2 text-orange-600" size={20} />
                 物件詳情
               </h3>
-              <div className="space-y-2 text-sm">
+              <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">座向:</span>
-                  <span>{property.direction}</span>
+                  <span className="text-gray-700 font-medium">座向:</span>
+                  <span className="text-gray-800 font-medium">{property.direction}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">管理費:</span>
-                  <span>${property.management_fee.toLocaleString()}/月</span>
+                  <span className="text-gray-700 font-medium">管理費:</span>
+                  <span className="text-gray-800 font-medium">${property.management_fee.toLocaleString()}/月</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">刊登日期:</span>
-                  <span>{formatDate(property.created_at)}</span>
+                  <span className="text-gray-700 font-medium">刊登日期:</span>
+                  <span className="text-gray-800 font-medium">{formatDate(property.created_at)}</span>
                 </div>
               </div>
             </div>
 
             <div>
-              <h3 className="font-semibold text-gray-800 mb-3 flex items-center">
-                <User className="mr-2" size={20} />
+              <h3 className="font-bold text-gray-800 mb-4 flex items-center">
+                <User className="mr-2 text-orange-600" size={20} />
                 聯絡資訊
               </h3>
-              <div className="space-y-2 text-sm">
+              <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">聯絡人:</span>
-                  <span>{property.contact_name}</span>
+                  <span className="text-gray-700 font-medium">聯絡人:</span>
+                  <span className="text-gray-800 font-medium">{property.contact_name}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">電話:</span>
-                  <a 
+                  <span className="text-gray-700 font-medium">電話:</span>
+                  <a
                     href={`tel:${property.contact_phone}`}
-                    className="text-blue-600 hover:text-blue-800"
+                    className="text-orange-600 hover:text-red-600 font-medium transition-colors"
                   >
                     {property.contact_phone}
                   </a>
@@ -217,12 +217,12 @@ export default function PropertyDetail() {
           {/* 特色標籤 */}
           {property.features && property.features.length > 0 && (
             <div className="mb-6">
-              <h3 className="font-semibold text-gray-800 mb-3">物件特色</h3>
-              <div className="flex flex-wrap gap-2">
+              <h3 className="font-bold text-gray-800 mb-4">物件特色</h3>
+              <div className="flex flex-wrap gap-3">
                 {property.features.map((feature, index) => (
                   <span
                     key={index}
-                    className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
+                    className="bg-gradient-to-r from-orange-100 to-red-100 text-orange-700 px-4 py-2 rounded-full text-sm font-medium border border-orange-200"
                   >
                     {feature}
                   </span>
@@ -234,8 +234,8 @@ export default function PropertyDetail() {
           {/* 描述 */}
           {property.description && (
             <div>
-              <h3 className="font-semibold text-gray-800 mb-3">物件描述</h3>
-              <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
+              <h3 className="font-bold text-gray-800 mb-4">物件描述</h3>
+              <p className="text-gray-800 leading-relaxed whitespace-pre-wrap text-base">
                 {property.description}
               </p>
             </div>
@@ -243,11 +243,11 @@ export default function PropertyDetail() {
         </div>
 
         {/* 聯絡按鈕 */}
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="warm-card p-6">
           <div className="flex flex-col md:flex-row gap-4">
             <a
               href={`tel:${property.contact_phone}`}
-              className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg text-center font-medium hover:bg-blue-700 transition-colors flex items-center justify-center"
+              className="flex-1 warm-button text-white py-4 px-6 text-center font-bold hover:shadow-lg transition-all flex items-center justify-center"
             >
               <Phone className="mr-2" size={20} />
               立即致電
@@ -255,13 +255,13 @@ export default function PropertyDetail() {
             <button
               onClick={() => {
                 const message = `您好，我對您的物件「${property.title}」有興趣，請問是否方便詳談？`;
-                const whatsappUrl = `https://wa.me/${property.contact_phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(message)}`;
-                window.open(whatsappUrl, '_blank');
+                const lineUrl = `https://line.me/R/msg/text/?${encodeURIComponent(message)}`;
+                window.open(lineUrl, '_blank');
               }}
-              className="flex-1 bg-green-600 text-white py-3 px-6 rounded-lg text-center font-medium hover:bg-green-700 transition-colors flex items-center justify-center"
+              className="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white py-4 px-6 rounded-xl text-center font-bold hover:shadow-lg transition-all flex items-center justify-center"
             >
               <span className="mr-2">💬</span>
-              WhatsApp 詢問
+              LINE 詢問
             </button>
           </div>
         </div>

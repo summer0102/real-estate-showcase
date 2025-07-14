@@ -64,26 +64,33 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen warm-bg">
       <MobileNavigation />
 
       {/* 標題區域 */}
-      <div className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto mobile-padding px-4 py-6">
-          <div className="flex items-center space-x-3 mb-4">
-            <HomeIcon className="text-blue-600" size={32} />
-            <h1 className="text-2xl font-bold text-gray-800">房屋物件展示</h1>
+      <div className="bg-white/80 backdrop-blur-sm shadow-sm border-b border-orange-100">
+        <div className="max-w-7xl mx-auto mobile-padding px-4 py-8">
+          <div className="flex items-center space-x-4 mb-6">
+            <div className="p-3 bg-gradient-to-br from-orange-400 to-red-500 rounded-2xl shadow-lg">
+              <HomeIcon className="text-white" size={28} />
+            </div>
+            <div>
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+                溫馨家園
+              </h1>
+              <p className="text-gray-600 text-sm mt-1">尋找您的理想居所</p>
+            </div>
           </div>
 
           {/* 搜尋欄 */}
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-orange-400" size={20} />
             <input
               type="text"
-              placeholder="搜尋物件標題、地址或描述..."
+              placeholder="搜尋您心儀的家園..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent mobile-input"
+              className="w-full pl-12 pr-4 py-4 warm-input mobile-input text-gray-700 placeholder-gray-500"
             />
           </div>
         </div>
