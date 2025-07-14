@@ -42,14 +42,14 @@ export default function PropertyCard({ property }: PropertyCardProps) {
                 e.currentTarget.nextElementSibling?.classList.remove('hidden');
               }}
             />
-          ) : null}
-          <div className="hidden flex items-center justify-center h-full text-gray-400">
-            <Home size={48} />
-          </div>
+          ) : (
             <div className="flex items-center justify-center h-full text-gray-400">
               <Home size={48} />
             </div>
-          ) : null}
+          )}
+          <div className="hidden flex items-center justify-center h-full text-gray-400">
+            <Home size={48} />
+          </div>
           
           {/* 物件類型標籤 */}
           <div className="absolute top-2 left-2 bg-blue-600 text-white px-2 py-1 rounded text-xs font-medium">
