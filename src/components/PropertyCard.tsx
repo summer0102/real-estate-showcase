@@ -3,7 +3,6 @@
 import { Property } from '@/types/property';
 import { MapPin, Home, Ruler, Phone } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 interface PropertyCardProps {
   property: Property;
