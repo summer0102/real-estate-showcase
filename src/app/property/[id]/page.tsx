@@ -107,10 +107,10 @@ export default function PropertyDetail() {
   }
 
   return (
-    <div className="min-h-screen warm-bg">
-      {/* 返回按鈕 */}
-      <div className="bg-white/90 backdrop-blur-sm shadow-sm border-b border-orange-100">
-        <div className="max-w-4xl mx-auto px-4 py-4">
+    <div className="min-h-screen bg-white">
+      {/* Instagram 風格返回按鈕 */}
+      <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
+        <div className="max-w-md mx-auto px-4 py-3">
           <button
             onClick={() => router.back()}
             className="flex items-center space-x-2 text-gray-700 hover:text-orange-600 transition-colors font-medium"
@@ -121,15 +121,15 @@ export default function PropertyDetail() {
         </div>
       </div>
 
-      {/* 主要內容 */}
-      <div className="max-w-4xl mx-auto px-4 py-6">
+      {/* Instagram 風格內容 */}
+      <div className="max-w-md mx-auto">
         {/* 圖片輪播 */}
         <div className="mb-6">
           <ImageCarousel images={property.images} title={property.title} />
         </div>
 
-        {/* 物件資訊 */}
-        <div className="warm-card p-6 mb-6">
+        {/* Instagram 風格物件資訊 */}
+        <div className="bg-white border-b border-gray-100 pb-4">
           {/* 標題和價格 */}
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
             <h1 className="text-3xl font-bold text-gray-800 mb-3 md:mb-0">
@@ -249,14 +249,14 @@ export default function PropertyDetail() {
           )}
         </div>
 
-        {/* 聯絡按鈕 */}
-        <div className="warm-card p-6">
+        {/* Instagram 風格聯絡按鈕 */}
+        <div className="bg-white border-t border-gray-100 p-4">
           <div className="flex flex-col md:flex-row gap-4">
             <a
               href={`tel:${property.contact_phone}`}
-              className="flex-1 warm-button text-white py-4 px-6 text-center font-bold hover:shadow-lg transition-all flex items-center justify-center"
+              className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 px-6 rounded-lg text-center font-medium hover:shadow-lg transition-all flex items-center justify-center"
             >
-              <Phone className="mr-2" size={20} />
+              <Phone className="mr-2" size={18} />
               立即致電
             </a>
             <button
@@ -265,7 +265,7 @@ export default function PropertyDetail() {
                 const lineUrl = `https://line.me/R/msg/text/?${encodeURIComponent(message)}`;
                 window.open(lineUrl, '_blank');
               }}
-              className="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white py-4 px-6 rounded-xl text-center font-bold hover:shadow-lg transition-all flex items-center justify-center"
+              className="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white py-3 px-6 rounded-lg text-center font-medium hover:shadow-lg transition-all flex items-center justify-center"
             >
               <span className="mr-2">💬</span>
               LINE 詢問

@@ -1,15 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Property, PropertyFilter as PropertyFilterType } from '@/types/property';
+import { Property } from '@/types/property';
 import { propertyService } from '@/lib/supabase';
 import PropertyCard from '@/components/PropertyCard';
-import PropertyFilter from '@/components/PropertyFilter';
 import { Home as HomeIcon } from 'lucide-react';
 
 export default function Home() {
-  const [filteredProperties, setFilteredProperties] = useState<Property[]>([]);
-  const [filters, setFilters] = useState<PropertyFilterType>({});
+  const [properties, setProperties] = useState<Property[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -25,7 +23,7 @@ export default function Home() {
       setIsLoading(true);
       setError(null);
       const data = await propertyService.getAllProperties();
-      setFilteredProperties(data);
+      setProperties(data);
     } catch (err) {
       console.error('載入物件失敗:', err);
       setError('載入物件失敗，請稍後再試');
@@ -34,40 +32,10 @@ export default function Home() {
     }
   };
 
-  const handleFilterChange = async (newFilters: PropertyFilterType) => {
-    try {
-      setIsLoading(true);
-      setFilters(newFilters);
-      const data = await propertyService.getFilteredProperties(newFilters);
-      setFilteredProperties(data);
-    } catch (err) {
-      console.error('篩選物件失敗:', err);
-      setError('篩選物件失敗，請稍後再試');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-white">
-
-      {/* Instagram 風格標題列 */}
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
-        <div className="max-w-md mx-auto px-4 py-3">
-          <div className="flex items-center justify-center">
-            <h1 className="text-2xl font-bold ig-gradient-text tracking-wide">
-              RealEstate
-            </h1>
-          </div>
-        </div>
-      </div>
-
       {/* Instagram 風格內容 */}
       <div className="max-w-md mx-auto">
-        {/* 篩選器 */}
-        <div className="px-4 py-3 border-b border-gray-100">
-          <PropertyFilter onFilterChange={handleFilterChange} isLoading={isLoading} />
-        </div>
 
         {/* 錯誤訊息 */}
         {error && (
@@ -96,19 +64,15 @@ export default function Home() {
               </div>
             ))}
           </div>
-        ) : filteredProperties.length === 0 ? (
+        ) : properties.length === 0 ? (
           <div className="text-center py-12 px-4">
             <HomeIcon className="mx-auto text-gray-400 mb-4" size={48} />
             <h3 className="text-lg font-medium text-gray-900 mb-2">沒有找到物件</h3>
-            <p className="text-gray-500 text-sm">
-              {Object.values(filters).some(v => v !== undefined && v !== '')
-                ? '請嘗試調整篩選器'
-                : '目前沒有可用的物件'}
-            </p>
+            <p className="text-gray-500 text-sm">目前沒有可用的物件</p>
           </div>
         ) : (
           <div className="space-y-0">
-            {filteredProperties.map((property) => (
+            {properties.map((property) => (
               <PropertyCard key={property.id} property={property} />
             ))}
           </div>
