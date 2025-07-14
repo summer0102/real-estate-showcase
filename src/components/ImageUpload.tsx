@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import Image from 'next/image';
 import { Upload, X, Loader2, AlertCircle } from 'lucide-react';
 import { propertyService } from '@/lib/supabase';
 
@@ -168,12 +167,14 @@ export default function ImageUpload({
           {images.map((imageUrl, index) => (
             <div key={index} className="relative group">
               <div className="aspect-square bg-gray-200 rounded-lg overflow-hidden">
-                <Image
+                <img
                   src={imageUrl}
                   alt={`圖片 ${index + 1}`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    console.error('圖片載入失敗:', imageUrl);
+                    e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTkgMTJMMTEgMTRMMTUgMTBNMjEgMTJDMjEgMTYuOTcwNiAxNi45NzA2IDIxIDEyIDIxQzcuMDI5NDQgMjEgMyAxNi45NzA2IDMgMTJDMyA3LjAyOTQ0IDcuMDI5NDQgMyAxMiAzQzE2Ljk3MDYgMyAyMSA3LjAyOTQ0IDIxIDEyWiIgc3Ryb2tlPSIjOTk5IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K';
+                  }}
                 />
               </div>
               
