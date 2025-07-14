@@ -33,12 +33,10 @@ export default function PropertyCard({ property }: PropertyCardProps) {
         {/* 圖片區域 */}
         <div className="relative h-48 bg-gray-200">
           {property.images && property.images.length > 0 ? (
-            <Image
+            <img
               src={property.images[0]}
               alt={property.title}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="w-full h-full object-cover"
             />
           ) : (
             <div className="flex items-center justify-center h-full text-gray-400">

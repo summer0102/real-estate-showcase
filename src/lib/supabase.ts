@@ -114,7 +114,10 @@ export const propertyService = {
   async uploadImage(file: File, fileName: string): Promise<string> {
     const { error } = await supabase.storage
       .from('property-images')
-      .upload(fileName, file);
+      .upload(fileName, file, {
+        cacheControl: '3600',
+        upsert: false
+      });
 
     if (error) throw error;
 
