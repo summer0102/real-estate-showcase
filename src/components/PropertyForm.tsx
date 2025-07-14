@@ -124,7 +124,7 @@ export default function PropertyForm({ property, onSubmit, onCancel, isLoading }
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              價格 (元) *
+              價格 (萬元) *
             </label>
             <input
               type="number"
@@ -133,9 +133,13 @@ export default function PropertyForm({ property, onSubmit, onCancel, isLoading }
               onChange={handleInputChange}
               required
               min="0"
+              step="0.1"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="請輸入價格"
+              placeholder="請輸入價格 (例: 888 代表 888萬)"
             />
+            <p className="text-xs text-gray-500 mt-1">
+              請輸入萬元為單位的價格，例如：888 代表 888萬元
+            </p>
           </div>
         </div>
 

@@ -109,10 +109,17 @@ export default function AdminPanel() {
   };
 
   const formatPrice = (price: number) => {
+    // 假設輸入的價格已經是萬元為單位
     if (price >= 10000) {
-      return `${(price / 10000).toFixed(1)}萬`;
+      return `${(price / 10000).toFixed(0)}億`;
+    } else if (price >= 1000) {
+      return `${(price / 1000).toFixed(1)}千萬`;
+    } else if (price >= 100) {
+      return `${Math.round(price)}萬`;
+    } else if (price >= 10) {
+      return `${price.toFixed(1)}萬`;
     }
-    return price.toLocaleString();
+    return `${price}萬`;
   };
 
   const getPropertyTypeText = (type: string) => {
