@@ -61,9 +61,20 @@ export default function PropertyForm({ property, onSubmit, onCancel, isLoading }
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value, type } = e.target;
+    console.log('Input change:', { name, value, type }); // 調試用
     setFormData(prev => ({
       ...prev,
       [name]: type === 'number' ? Number(value) : value,
+    }));
+  };
+
+  // 專門處理地址輸入的函數
+  const handleAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    console.log('Address change:', value); // 調試用
+    setFormData(prev => ({
+      ...prev,
+      address: value,
     }));
   };
 
@@ -150,8 +161,8 @@ export default function PropertyForm({ property, onSubmit, onCancel, isLoading }
           <input
             type="text"
             name="address"
-            value={formData.address}
-            onChange={handleInputChange}
+            value={formData.address || ''}
+            onChange={handleAddressChange}
             required
             autoComplete="off"
             autoCorrect="off"
